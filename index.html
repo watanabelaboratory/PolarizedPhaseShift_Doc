@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <title>IS3-19</title>
+</head>
+
+<body>
+    <div class="index" id="header">
+        <div class="title">偏光アレイカメラを用いた構造化光法による<br>深度・法線の高速取得</div>
+        <div id="author">野元 貴史<sup>1</sup>，田畑 智志<sup>2</sup>，渡辺 義浩<sup>1</sup><br><sup>1</sup>東京工業大学，<sup>2</sup>東京大学
+        </div>
+    </div>
+    <div class="subtitle"><span class="tags">背景</span><span class="tags-subtitle">深度と法線の統合が3次元計測の高精度化に有効</span></div>
+
+    <div id="previous-work" class="centering">
+        <div class="card">
+            <div class="card-title">深度と法線を統合することで<br>3次元形状の高精度化</div>
+            <div class="card-image-div">
+                <img src="data/combine.png" class="card-image">
+            </div>
+            <p class="card-reference">[Nehab+, 2005]</p>
+        </div>
+        <div class="card">
+            <div class="card-title">高速プロジェクタを用いた<br>位相シフトによる深度取得の高速化</div>
+            <div class="card-image-div">
+                <img src="data/phaseshift.jpg" class="card-image">
+            </div>
+            <p class="card-reference">[Tabata+, 2019]</p>
+        </div>
+        <div class="card">
+            <div class="card-title">偏光画像を用いた法線取得</div>
+            <div class="card-image-div">
+                <img src="data/Polarized3D.png" class="card-image">
+            </div>
+            <p class="card-reference">[Kadambi+, 2015]</p>
+        </div>
+    </div>
+
+    <ul>
+        <li>より高速でより高精度な3次元形状の計測が求められている</li>
+        <li>深度と法線を統合することで3次元形状を高精度化することができる</li>
+        <li>深度・法線を高速かつ同時に取得することは難しかった</li>
+    </ul>
+
+    <div class="subtitle"><span class="tags">手法概要</span><span class="tags-subtitle">偏光アレイカメラを用いた位相シフト法</span></div>
+    <div class="centering">
+        <figure><img src="data/overview.svg" id="overview-image">
+            <figcaption>システム概要</figcaption>
+        </figure>
+    </div>
+
+    <ul>
+        <li><span class="highlight-red">高速プロジェクタと偏光アレイカメラ</span>を用いた位相シフト法を行うことで，深度・法線を高速かつ同時に取得する</li>
+        <li>位相シフト法によって深度を，偏光センシングによって法線を取得する</li>
+        <li>偏光センシングから計算した法線の<span class="highlight-red">低周波ノイズや曖昧性を同時に取得した深度情報を利用して</span>解消する</li>
+        <li>偏光センシングは位相シフト法に用いた構造化光を<span class="highlight-red">再利用</span>することで撮像回数を削減できる</li>
+        <li>深度と法線を同じ画像を用いて取得しているため、<span class="highlight-red">深度と法線の画素の対応がすでに取れている</span></li>
+        <li>各画素ごとに独立して計算可能であるため、GPUを用いた並列計算によって高速化することができる</li>
+    </ul>
+
+
+    <div class="subtitle"><span class="tags">深度取得</span><span class="tags-subtitle">位相シフト法によって深度を取得</span></div>
+
+    <div class="centering">
+        <figure>
+            <img src="data/depth.png" id="depth-image">
+            <img src="data/normal_dep.png" id="normal-dep-image">
+            <figcaption>位相シフト法によって得られた深度、深度から計算した法線</figcaption>
+        </figure>
+    </div>
+    <div class="contents">
+        <ul>
+            <li>7 周期の正弦波パターン3 枚と，位相接続のためのグレイコードパターン3枚で位相シフト法をおこなった</li>
+            <li>位相シフト法によって取得した深度には高周波ノイズが発生している</li>
+            <li>深度を用いて計算した法線には高周波ノイズの影響を強く受ける</li>
+        </ul>
+    </div>
+
+    <div class="subtitle"><span class="tags">法線取得</span><span class="tags-subtitle">偏光解析によって法線を取得</span></div>
+
+
+    <div class="centering">
+        <figure>
+            <img src="data/normal_pol.png" id="normal-pol-img">
+            <img src="data/azimuth_pol.png" id="azimuth-pol-img">
+            <img src="data/zenith_pol.png" id="zenith-pol-img">
+            <figcaption>偏光解析によって得られた法線とその方位角・天頂角</figcaption>
+        </figure>
+    </div>
+    <div class="contents">
+        偏光解析による法線計測には以下の3つの問題がある．
+        <ul>
+            <li>方位角に$180^\circ$の曖昧性がある</li>
+            <li>正確な天頂角を求めるためには計測対象の屈折率が分かっている必要がある</li>
+            <li>偏光度が小さい場合，つまり天頂角が 0 に近い場合に計測した法線のノイズが大きくなる</li>
+        </ul>
+        <a href="pol-normal.html">もっと詳しく</a>
+    </div>
+
+
+    <div class="subtitle"><span class="tags">法線の誤差解消</span><span
+            class="tags-subtitle">偏光解析によって求めた法線の誤差を深度を用いて解消する</span></div>
+    <div class="centering">
+        <div class="centering" id="inline-content">
+            <figure><img src="data/azimuth_.png" id="azimuth-image">
+                <figcaption>方位角の曖昧性解消</figcaption>
+            </figure>
+        </div>
+        <div class="centering" id="inline-content">
+            <figure><img src="data/zenith_.png" id="zenith-image">
+                <figcaption>天頂角の低周波ノイズ解消</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="contents">
+        <a href="disambiguation.html">もっと詳しく</a>
+    </div>
+
+    <div class="subtitle"><span class="tags">実験</span><span class="tags-subtitle">深度・法線の計算は 約 0.4 ms を達成した</span></div>
+
+    <div>
+        <div id="inline-content">
+            <ul>
+                <li>CPU : Intel Xeon E5-2687W dual</li>
+                <li>GPU : NVIDIA GEFORCE RTX 2080 Ti</li>
+                <li>高速プロジェクタ : <a href="http://www.vision.ict.e.titech.ac.jp/projects/dynaflash/index-j.html"
+                        target="_blank">DynaFlash</a> <br>(1024×768 pixel 280 fpsで投影)</li>
+                <li>偏光アレイカメラ : BFS-U3-51S5P-C USB3 Blackfly S <br>(720×540 pixel 280 fpsで撮像)</li>
+                <li>プロジェクタの投影とカメラの撮像は同期されていた</li>
+            </ul>
+        </div>
+        <div class="centering" id="inline-left-image">
+            <figure><img src="data/system.svg" id="system-image">
+                <figcaption>実験システム</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="centering">
+        <video src="data/movie0.mp4" id="movie0" autoplay controls loop></video>
+    </div>
+
+
+</body>
+
+</html>

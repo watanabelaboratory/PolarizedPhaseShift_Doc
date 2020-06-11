@@ -1,0 +1,179 @@
+html {
+    font-family: 'メイリオ', 'Meiryo', sans-serif;
+}
+
+body {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+.index {
+    background-color: #002060;
+    color: #FFFFFF;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.subtitle {
+    background-color: #DAE3F3;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+#author {
+    text-align: center;
+    font-size: 18px;
+}
+
+.tags {
+    text-align: center;
+    width: 180px;
+    background: #002060;
+    color: #fff;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px 0 20px;
+    margin-right: 50px;
+    position: relative;
+}
+
+.tags::before {
+    border: 25px solid transparent;
+    border-left-color: #002060;
+    border-right-width: 0;
+    content: '';
+    display: block;
+    height: 0;
+    position: absolute;
+    right: -25px;
+    top: 0;
+    width: 0;
+}
+
+.tags-subtitle {
+    text-align: center;
+}
+
+#movie0 {
+    width: 60%;
+    max-width: 800px;
+}
+
+#overview-image {
+    width: 80%;
+    max-width: 800px;
+}
+
+#system-image {
+    width: 300px;
+}
+
+.centering {
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    max-width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.card-title {
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+    background: #002060;
+    color: #FFF;
+    border-radius: 8px;
+}
+
+.card-image-div {
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.card-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0 0 0 0;
+}
+
+.card-reference {
+    text-align: right;
+    font-size: 18px;
+    margin: 0px;
+}
+.contents{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#inline-content {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 50px;
+}
+
+#inline-left-image {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.highlight-red {
+    color: #F00;
+    font-weight: bold;
+}
+
+#depth-image {
+    display: inline-block;
+    width: 300px;    
+}
+
+#normal-dep-image {
+    display: inline-block;
+    width: 300px;    
+}
+
+#normal-pol-img {
+    display: inline-block;
+    width: 250px;    
+}
+
+#azimuth-pol-img {
+    display: inline-block;
+    width: 250px;
+}
+
+#zenith-pol-img {
+    display: inline-block;
+    width: 250px;
+}
+
+#zenith-image {
+    width:300px;
+}
+
+#azimuth-image {
+    width:300px;
+}

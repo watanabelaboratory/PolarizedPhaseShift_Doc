@@ -177,3 +177,18 @@ figure {
 #azimuth-image {
     width:300px;
 }
+
+#normal-img {
+    display: inline-block;
+    width: 300px;      
+}
+
+#depth-img {
+    display: inline-block;
+    width: 300px;      
+}
+
+#graycode-img {
+    display: inline-block;
+    width: 70%;      
+}

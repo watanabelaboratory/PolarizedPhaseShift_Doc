@@ -22,11 +22,23 @@
         <div class="subtitle"><span class="tags">法線の誤差解消</span><span
             class="tags-subtitle">偏光解析によって求めた法線の誤差を深度を用いて解消する</span></div>
 
+            <div class="centering" >
+                <div class="centering"  id="inline-content">
+                    <figure><img src="data/azimuth_.png" id="azimuth-image">
+                        <figcaption>方位角の曖昧性解消</figcaption>
+                    </figure>
+                </div>
+                <div class="centering"  id="inline-content">
+                    <figure><img src="data/zenith_.png" id="zenith-image">
+                        <figcaption>天頂角の低周波ノイズ解消</figcaption>
+                    </figure>
+                </div>
+            </div>
 
             <div class="contents">
             <h2>方位角の曖昧性の解消</h2>
             偏光解析によって得られた方位角には $180^\circ$ の曖昧性が残っている．
-            これを深度を用いて以下の式(\ref{fixphi})によって解消する．
+            これを深度を用いて以下の式によって解消する．
             \[
             \begin{eqnarray}
                 \varphi = \begin{cases}
@@ -40,7 +52,7 @@
             
             <h2>天頂角の低周波ノイズの解消</h2>
             偏光解析によって得られた天頂角は屈折率が正確でないため，低周波ノイズが生じており形状が歪んでいる．
-            これを深度から求めた天頂角の低周波成分を用いて以下の式(\ref{fixtheta})によって天頂角を修正する.
+            これを深度から求めた天頂角の低周波成分を用いて以下の式によって天頂角を修正する.
             \[
             \begin{eqnarray}
                 \vartheta = \vartheta_{pol} + \widehat{\vartheta}_{dep} - \widehat{\vartheta}_{pol}
@@ -51,7 +63,7 @@
             
             <h2>偏光度が小さい場合のノイズの解消</h2>
             偏光度$\rho$が小さい場合，つまり天頂角が0に近い場合に，偏光解析の値が不安定になり法線にノイズが発生する．
-            そのため，偏光度$\rho$の値によって以下の式(\ref{fixnormal})で法線を修正する．
+            そのため，偏光度$\rho$の値によって以下の式で法線を修正する．
             \[
             \begin{eqnarray}
                 \boldsymbol{N} = \begin{cases}
@@ -63,18 +75,6 @@
             \]
             ここで，$\widehat{\boldsymbol{N}}_{dep}$は平滑化した深度から得られた法線であり，$\boldsymbol{N}_{pol}$は偏光解析によって得られる法線である．
             $\tau$は閾値であり，本稿では $\tau = 0.01$とした．
-        </div>
-        <div class="centering" >
-            <div class="centering"  id="inline-content">
-                <figure><img src="data/azimuth_.png" id="azimuth-image">
-                    <figcaption>方位角の曖昧性解消</figcaption>
-                </figure>
-            </div>
-            <div class="centering"  id="inline-content">
-                <figure><img src="data/zenith_.png" id="zenith-image">
-                    <figcaption>天頂角の低周波ノイズ解消</figcaption>
-                </figure>
-            </div>
         </div>
     </body>
 </html>

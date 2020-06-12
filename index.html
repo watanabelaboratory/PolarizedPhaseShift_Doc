@@ -32,21 +32,21 @@
             <div class="card-image-div">
                 <img src="data/combine.png" class="card-image">
             </div>
-            <p class="card-reference">[Nehab+, 2005]</p>
+            <p class="card-reference">[<a href="https://dl.acm.org/doi/10.1145/1186822.1073226" target="_blank">Nehab+, 2005</a>]</p>
         </div>
         <div class="card">
             <div class="card-title">高速プロジェクタを用いた<br>位相シフトによる深度取得の高速化</div>
             <div class="card-image-div">
                 <img src="data/phaseshift.jpg" class="card-image">
             </div>
-            <p class="card-reference">[Tabata+, 2019]</p>
+            <p class="card-reference">[<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6358991/" target="_blank">Tabata+, 2019</a>]</p>
         </div>
         <div class="card">
             <div class="card-title">偏光画像を用いた法線取得</div>
             <div class="card-image-div">
                 <img src="data/Polarized3D.png" class="card-image">
             </div>
-            <p class="card-reference">[Kadambi+, 2015]</p>
+            <p class="card-reference">[<a href="http://web.media.mit.edu/~achoo/polar3D/" target="_blank">Kadambi+, 2015</a>]</p>
         </div>
     </div>
 
@@ -65,9 +65,9 @@
 
     <ul>
         <li><span class="highlight-red">高速プロジェクタと偏光アレイカメラ</span>を用いた位相シフト法を行うことで，深度・法線を高速かつ同時に取得する</li>
-        <li>位相シフト法によって深度を，偏光センシングによって法線を取得する</li>
-        <li>偏光センシングから計算した法線の<span class="highlight-red">低周波ノイズや曖昧性を同時に取得した深度情報を利用して</span>解消する</li>
-        <li>偏光センシングは位相シフト法に用いた構造化光を<span class="highlight-red">再利用</span>することで撮像回数を削減できる</li>
+        <li>位相シフト法によって深度を，偏光解析によって法線を取得する</li>
+        <li>偏光解析は位相シフト法に用いた構造化光を<span class="highlight-red">再利用</span>することで撮像回数を削減できる</li>
+        <li>偏光解析によって取得した法線の<span class="highlight-red">低周波ノイズや曖昧性を同時に取得した深度情報を利用して</span>解消する</li>
         <li>深度と法線を同じ画像を用いて取得しているため、<span class="highlight-red">深度と法線の画素の対応がすでに取れている</span></li>
         <li>各画素ごとに独立して計算可能であるため、GPUを用いた並列計算によって高速化することができる</li>
     </ul>
@@ -88,6 +88,7 @@
             <li>位相シフト法によって取得した深度には高周波ノイズが発生している</li>
             <li>深度を用いて計算した法線には高周波ノイズの影響を強く受ける</li>
         </ul>
+        <a href="phaseShift.html">もっと詳しく</a>
     </div>
 
     <div class="subtitle"><span class="tags">法線取得</span><span class="tags-subtitle">偏光解析によって法線を取得</span></div>
@@ -151,8 +152,24 @@
     </div>
 
     <div class="centering">
-        <video src="data/movie0.mp4" id="movie0" autoplay controls loop></video>
+        <video src="data/movie0.mp4" id="movie0" autoplay controls loop muted></video>
     </div>
+
+    <div class="subtitle"><span class="tags">まとめ</span></div>
+    <div class="centering">
+        <figure>
+            <img src="data/normal.png" id="normal-img">
+            <img src="data/depth.png" id="depth-img">
+            <figcaption>(左) 法線 (右) 深度</figcaption>
+        </figure>
+    </div>
+    <div id="inline-content">
+        <ul>
+            <li><span class="highlight-red">高速プロジェクタと偏光アレイカメラ</span>を用いた位相シフト法を行うことで，深度・法線を高速かつ同時に取得することができた</li>
+            <li>本研究では深度を用いて法線の誤差を修正したが、法線を用いて深度を修正することも検討している</li>
+        </ul>
+    </div>
+
 
 
 </body>

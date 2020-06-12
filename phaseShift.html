@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script>
+        MathJax = {
+          chtml: {
+            matchFontHeight: false
+          },
+          tex: {
+            inlineMath: [['$', '$']]
+          }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <title>IS3-19</title>
+</head>
+
+<body>
+    <div class="subtitle"><span class="tags">深度取得</span><span class="tags-subtitle">位相シフト法によって深度を取得</span></div>
+    <div class="contents">
+        <div class="centering">
+            <figure>
+                <img src="data/depth.png" id="depth-image">
+                <img src="data/normal_dep.png" id="normal-dep-image">
+                <figcaption>位相シフト法によって得られた深度、深度から計算した法線</figcaption>
+            </figure>
+        </div>
+        <h2>7周期のパターン</h2>
+        <div class="centering">
+            <figure>
+                <img src="data/graycode.png" id="graycode-img">
+                <figcaption>偏光解析によって得られた法線とその方位角・天頂角</figcaption>
+            </figure>
+        </div>
+        <ul>
+            <li>$2^3 = 8$分割のグレーコードを使うのが一般的だが、一度も投影されない領域ができてしまい偏光解析に影響が出るため、000 の値を抜いた 7分割のグレーコードを用いた</li>
+        </ul>
+
+
+        <h2>問題点</h2>
+        <ul>
+            <li>高周波ノイズが発生している</li>
+            <li>深度から計算した法線は高周波ノイズの影響を強く受け、表面の法線が凸凹してしまう</li>
+        </ul>
+    </div>
+</body>
+</html>
